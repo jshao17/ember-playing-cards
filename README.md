@@ -1,5 +1,21 @@
-# Ember-playing-cards
+# ember-playing-cards
 
+An ember-cli addon for [scalable-css-playing-cards](http://donpark.github.io/scalable-css-playing-cards) by donpark.
+
+## Usage
+
+Install with -
+```
+ember install:addon ember-playing-cards
+```
+
+In your templates use -
+```
+{{playing-card rank='jack' suit='spade'}}
+{{playing-card rank='seven' suit='diamond'}}
+{{playing-card rank='big-joker'}}
+{{playing-card rank='back'}}
+```
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
