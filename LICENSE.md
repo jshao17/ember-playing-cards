@@ -51,13 +51,3 @@ Image in `assets/gray-scott.psd` is from Michal Migursky's article
 [generating repeating patterns](http://mike.teczno.com/notes/gray-scott-reaction-diffusion.html)
 which is an example of Gray-Scott model of reaction-diffsion. Python source code used to generate
 the pattern can be found in the article.
-
-
-## Script files
-
-### FLIPPY jQuery plugin 1.0.1
-
-This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
-
-- website: [http://guilhemmarty.com/flippy](http://guilhemmarty.com/flippy)
-- author: [Guilhem MARTY](bonjour@guilhemmarty.com)
