@@ -15,88 +15,53 @@ export default Ember.Component.extend({
     return this.get('hideRank') ||
            rank === 'jack' || rank === 'queen' || rank === 'king' || rank === 'back';
   }.property('rank'),
-  topCenter: function() {
+  suitPositions: function() {
+    var suitPositions = [];
     var rank = this.get('rank');
-    return rank === 'two' || rank === 'three';
-  }.property('rank'),
-  topLeft: function() {
-    var rank = this.get('rank');
-    return rank === 'four' || rank === 'five' ||
-           rank === 'six' || rank === 'seven' ||
-           rank === 'eight' || rank === 'nine' ||
-           rank === 'ten';
-  }.property('rank'),
-  topRight: function() {
-    var rank = this.get('rank');
-    return rank === 'four' || rank === 'five' ||
-           rank === 'six' || rank === 'seven' ||
-           rank === 'eight' || rank === 'nine' ||
-           rank === 'ten';
-  }.property('rank'),
-  bottomCenter: function() {
-    var rank = this.get('rank');
-    return rank === 'two' || rank === 'three';
-  }.property('rank'),
-  bottomLeft: function() {
-    var rank = this.get('rank');
-    return rank === 'four' || rank === 'five' ||
-           rank === 'six' || rank === 'seven' ||
-           rank === 'eight' || rank === 'nine' ||
-           rank === 'ten';
-  }.property('rank'),
-  bottomRight: function() {
-    var rank = this.get('rank');
-    return rank === 'four' || rank === 'five' ||
-           rank === 'six' || rank === 'seven' ||
-           rank === 'eight' || rank === 'nine' ||
-           rank === 'ten';
-  }.property('rank'),
-  middleCenter: function() {
-    var rank = this.get('rank');
-    return rank === 'ace' || rank === 'three' ||
-           rank === 'five' || rank === 'nine';
-  }.property('rank'),
-  middleTop: function() {
-    var rank = this.get('rank');
-    return rank === 'seven' || rank === 'eight';
-  }.property('rank'),
-  middleBottom: function() {
-    var rank = this.get('rank');
-    return rank === 'eight';
-  }.property('rank'),
-  middleLeft: function() {
-    var rank = this.get('rank');
-    return rank === 'six' || rank === 'seven' ||
-           rank === 'eight';
-  }.property('rank'),
-  middleRight: function() {
-    var rank = this.get('rank');
-    return rank === 'six' || rank === 'seven' ||
-           rank === 'eight';
-  }.property('rank'),
-  middleTopCenter: function() {
-    var rank = this.get('rank');
-    return rank === 'ten';
-  }.property('rank'),
-  middleTopLeft: function() {
-    var rank = this.get('rank');
-    return rank === 'nine' || rank === 'ten';
-  }.property('rank'),
-  middleTopRight: function() {
-    var rank = this.get('rank');
-    return rank === 'nine' || rank === 'ten';
-  }.property('rank'),
-  middleBottomCenter: function() {
-    var rank = this.get('rank');
-    return rank === 'ten';
-  }.property('rank'),
-  middleBottomLeft: function() {
-    var rank = this.get('rank');
-    return rank === 'nine' || rank === 'ten';
-  }.property('rank'),
-  middleBottomRight: function() {
-    var rank = this.get('rank');
-    return rank === 'nine' || rank === 'ten';
+    if (rank === 'two' || rank === 'three') {
+      suitPositions.push('top-center');
+      suitPositions.push('bottom-center');
+    }
+    if (rank === 'four' || rank === 'five' ||
+        rank === 'six' || rank === 'seven' ||
+        rank === 'eight' || rank === 'nine' ||
+        rank === 'ten') {
+      suitPositions.push('top-left');
+      suitPositions.push('top-right');
+    }
+    if (rank === 'four' || rank === 'five' ||
+        rank === 'six' || rank === 'seven' ||
+        rank === 'eight' || rank === 'nine' ||
+        rank === 'ten') {
+      suitPositions.push('bottom-left');
+      suitPositions.push('bottom-right');
+    }
+    if (rank === 'ace' || rank === 'three' ||
+        rank === 'five' || rank === 'nine') {
+      suitPositions.push('middle-center');
+    }
+    if (rank === 'seven' || rank === 'eight') {
+      suitPositions.push('middle-top');
+    }
+    if (rank === 'eight') {
+      suitPositions.push('middle-bottom');
+    }
+    if (rank === 'six' || rank === 'seven' ||
+        rank === 'eight') {
+      suitPositions.push('middle-left');
+      suitPositions.push('middle-right');
+    }
+    if (rank === 'ten') {
+      suitPositions.push('middle-top-center');
+      suitPositions.push('middle-bottom-center');
+    }
+    if (rank === 'nine' || rank === 'ten') {
+      suitPositions.push('middle-top-left');
+      suitPositions.push('middle-top-right');
+      suitPositions.push('middle-bottom-left');
+      suitPositions.push('middle-bottom-right');
+    }
+    return suitPositions;
   }.property('rank'),
   number: function() {
     switch(this.get('rank')) {

@@ -8,57 +8,9 @@
 {{#if isFace}}
 <span class="face"></span>
 {{else}}
-  {{#if topCenter}}
-  <span class="suit top-center">{{symbol}}</span>
-  {{/if}}
-  {{#if topLeft}}
-  <span class="suit top-left">{{symbol}}</span>
-  {{/if}}
-  {{#if topRight}}
-  <span class="suit top-right">{{symbol}}</span>
-  {{/if}}
-  {{#if bottomCenter}}
-  <span class="suit bottom-center">{{symbol}}</span>
-  {{/if}}
-  {{#if bottomLeft}}
-  <span class="suit bottom-left">{{symbol}}</span>
-  {{/if}}
-  {{#if bottomRight}}
-  <span class="suit bottom-right">{{symbol}}</span>
-  {{/if}}
-  {{#if middleCenter}}
-  <span class="suit middle-center">{{symbol}}</span>
-  {{/if}}
-  {{#if middleTop}}
-  <span class="suit middle-top">{{symbol}}</span>
-  {{/if}}
-  {{#if middleBottom}}
-  <span class="suit middle-bottom">{{symbol}}</span>
-  {{/if}}
-  {{#if middleLeft}}
-  <span class="suit middle-left">{{symbol}}</span>
-  {{/if}}
-  {{#if middleRight}}
-  <span class="suit middle-right">{{symbol}}</span>
-  {{/if}}
-  {{#if middleTopCenter}}
-  <span class="suit middle-top-center">{{symbol}}</span>
-  {{/if}}
-  {{#if middleTopLeft}}
-  <span class="suit middle-top-left">{{symbol}}</span>
-  {{/if}}
-  {{#if middleTopRight}}
-  <span class="suit middle-top-right">{{symbol}}</span>
-  {{/if}}
-  {{#if middleBottomCenter}}
-  <span class="suit middle-bottom-center">{{symbol}}</span>
-  {{/if}}
-  {{#if middleBottomLeft}}
-  <span class="suit middle-bottom-left">{{symbol}}</span>
-  {{/if}}
-  {{#if middleBottomRight}}
-  <span class="suit middle-bottom-right">{{symbol}}</span>
-  {{/if}}
+{{#each pos in suitPositions}}
+<span {{bind-attr class=':suit pos'}}>{{symbol}}</span>
+{{/each}}
 {{/if}}
 
 {{#unless hideRank}}
