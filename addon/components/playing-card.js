@@ -17,6 +17,11 @@ export default Ember.Component.extend({
   }.property('rank'),
   suitPositions: function() {
     var suitPositions = [];
+
+    if (this.get('isFace')) {
+      return [];
+    }
+
     var rank = this.get('rank');
     if (rank === 'two' || rank === 'three') {
       suitPositions.push('top-center');
@@ -61,12 +66,11 @@ export default Ember.Component.extend({
       suitPositions.push('middle-bottom-left');
       suitPositions.push('middle-bottom-right');
     }
-    return suitPositions;
+
+    return suitPositions.length > 0 ? suitPositions : ['middle-center'];
   }.property('rank'),
   number: function() {
     switch(this.get('rank')) {
-      case 'ace':
-        return 'A';
       case 'two':
         return '2';
       case 'three':
@@ -91,8 +95,12 @@ export default Ember.Component.extend({
         return 'Q';
       case 'king':
         return 'K';
-      default:
+      case 'little-joker':
+      case 'big-joker':
         return 'J';
+      case 'ace':
+      default:
+        return 'A'; // Default card if invalid input is Ace of Spades
     }
   }.property('rank'),
   symbol: function() {
@@ -108,10 +116,8 @@ export default Ember.Component.extend({
         text = '&hearts;';
         break;
       case 'spade':
-        text = '&spades;';
-        break;
       default:
-        text = '&spades';
+        text = '&spades;';
     }
     return Ember.String.htmlSafe(text);
   }.property('suit'),

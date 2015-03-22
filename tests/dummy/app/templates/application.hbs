@@ -1,7 +1,19 @@
-{{#each suit in suits}}
-{{#each rank in ranks}}
-{{playing-card rank=rank suit=suit}}
-{{/each}}
-{{/each}}
-{{playing-card rank='big-joker'}}
-{{playing-card rank='little-joker'}}
+<div>
+  <h1>Normal Cards</h1>
+  {{#each suit in suits}}
+  {{#each rank in ranks}}
+  {{playing-card rank=rank suit=suit}}
+  {{/each}}
+  {{/each}}
+</div>
+
+<div>
+  <h1>Jokers</h1>
+  {{playing-card rank='big-joker'}}
+  {{playing-card rank='little-joker'}}
+</div>
+
+<div>
+<h1>Invalid Card (defaults to ace of spades with smaller center)</h1>
+{{playing-card rank='unknown'}}
+</div>
