@@ -2,5 +2,9 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-playing-cards'
+  name: 'ember-playing-cards',
+  included: function(app, parentAddon) {
+    var target = (parentAddon || app);
+    target.import('vendor/playingcards.css');
+  }
 };
