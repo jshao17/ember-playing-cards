@@ -37,6 +37,10 @@
 .playing-card.diamond {
   color: #df0000;
 }
+.playing-card.spade,
+.playing-card.club {
+  color: #000000;
+}
 .playing-card .corner {
   line-height: 1;
   position: absolute;
