@@ -1,6 +1,6 @@
 {
   "name": "ember-playing-cards",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "An ember-cli addon for scalable-css-playing-cards by donpark.",
   "directories": {
     "doc": "doc",
