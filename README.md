@@ -16,6 +16,9 @@ In your templates use -
 {{playing-card rank='big-joker'}}
 {{playing-card rank='back'}}
 ```
+
+[Demo](http://jshao17.github.io/ember-playing-cards/)
+
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
