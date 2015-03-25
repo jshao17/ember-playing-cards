@@ -1,4 +1,29 @@
 <div>
+  <h1>Random Cards</h1>
+  {{playing-card suit='club'}}
+  {{playing-card}}
+  {{playing-card}}
+  {{playing-card}}
+</div>
+<div>
+  <h1>Random Numbered Cards</h1>
+  {{playing-card rank='number' suit='heart'}}
+  {{playing-card rank='number' suit='diamond'}}
+  {{playing-card rank='number'}}
+  {{playing-card rank='number'}}
+</div>
+<div>
+  <h1>Random Faces</h1>
+  {{playing-card rank='face'}}
+  {{playing-card rank='face'}}
+</div>
+<div>
+  <h1>Random Kings</h1>
+  {{playing-card rank='king'}}
+  {{playing-card rank='king'}}
+  {{playing-card rank='king'}}
+</div>
+<div>
   <h1>Normal Cards</h1>
   {{#each suit in suits}}
   {{#each rank in ranks}}

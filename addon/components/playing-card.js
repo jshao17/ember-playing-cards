@@ -1,20 +1,48 @@
 import Ember from 'ember';
+import random from '../utils/random-element';
 import layout from '../templates/components/playing-card';
 
 export default Ember.Component.extend({
-  classNameBindings: [':playing-card', 'cardRankClass', 'suit'],
+  classNameBindings: [':playing-card', 'cardRankClass', 'resolvedSuit'],
+  specials: ['little-joker', 'big-joker', 'back'],
+  ace: ['ace'],
+  numbers: ['two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'],
+  faces: ['jack', 'queen', 'king'],
+  suits: ['club', 'diamond', 'heart', 'spade'],
+  resolvedRank: function() {
+    var rank = this.get('rank');
+    if (rank == null) {
+      var candidates = this.specials.concat(this.ace, this.numbers, this.faces);
+      return random(candidates);
+    }
+    else if (rank === 'number') {
+      return random(this.numbers);
+    } else if (rank === 'face') {
+      return random(this.faces);
+    } else {
+      return rank;
+    }
+  }.property('rank'),
+  resolvedSuit: function() {
+    var suit = this.get('suit');
+    if (suit == null) {
+      return random(this.suits);
+    } else {
+      return suit;
+    }
+  }.property('suit'),
   cardRankClass: function() {
-    return 'card-' + this.get('rank');
-  }.property('rank'),
+    return 'card-' + this.get('resolvedRank');
+  }.property('resolvedRank'),
   hideRank: function() {
-    var rank = this.get('rank');
-    return rank === 'big-joker' || rank === 'little-joker' || rank === 'back';
-  }.property('rank', 'suit'),
+    var rank = this.get('resolvedRank');
+    return this.specials.indexOf(rank) >= 0;
+  }.property('resolvedRank', 'suit'),
   isFace: function() {
-    var rank = this.get('rank');
+    var rank = this.get('resolvedRank');
     return this.get('hideRank') ||
-           rank === 'jack' || rank === 'queen' || rank === 'king';
-  }.property('rank'),
+           this.faces.indexOf(rank) >= 0;
+  }.property('resolvedRank'),
   suitPositions: function() {
     var suitPositions = [];
 
@@ -22,7 +50,7 @@ export default Ember.Component.extend({
       return suitPositions;
     }
 
-    var rank = this.get('rank');
+    var rank = this.get('resolvedRank');
     if (rank === 'two' || rank === 'three') {
       suitPositions.push('top-center');
       suitPositions.push('bottom-center');
@@ -68,9 +96,9 @@ export default Ember.Component.extend({
     }
 
     return suitPositions.length > 0 ? suitPositions : ['middle-center'];
-  }.property('rank'),
+  }.property('resolvedRank'),
   number: function() {
-    switch(this.get('rank')) {
+    switch(this.get('resolvedRank')) {
       case 'ace':
         return 'A';
       case 'two':
@@ -103,10 +131,10 @@ export default Ember.Component.extend({
       default:
         return 'A'; // Default card if invalid input is Ace of Spades
     }
-  }.property('rank'),
+  }.property('resolvedRank'),
   symbol: function() {
     var text;
-    switch(this.get('suit')) {
+    switch(this.get('resolvedSuit')) {
       case 'club':
         text = '&clubs;';
         break;
@@ -123,6 +151,6 @@ export default Ember.Component.extend({
         text = '&spades;';
     }
     return Ember.String.htmlSafe(text);
-  }.property('suit'),
+  }.property('resolvedSuit'),
   layout: layout
 });

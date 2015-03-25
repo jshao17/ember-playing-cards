@@ -11,6 +11,9 @@ ember install:addon ember-playing-cards
 
 In your templates use -
 ```
+{{playing-card}}
+{{playing-card rank='face'}}
+{{playing-card suit='heart'}}
 {{playing-card rank='jack' suit='spade'}}
 {{playing-card rank='seven' suit='diamond'}}
 {{playing-card rank='big-joker'}}
